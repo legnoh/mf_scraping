@@ -1,0 +1,5 @@
+[scripts]
+test = "python3 chromedriver.py"
+
+[packages]
+selenium = "*"
