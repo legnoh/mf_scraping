@@ -41,4 +41,4 @@ jobs:
       uses: google-github-actions/upload-cloud-storage@main
       with:
         path: ./moneyforward.json
-        destination: ${{ secrets.BUCKET_NAME }}/moneyforward.json
+        destination: ${{ secrets.BUCKET_NAME }}/
