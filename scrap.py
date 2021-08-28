@@ -4,7 +4,7 @@ import yaml
 from datetime import datetime, timedelta, timezone
 from selenium import webdriver
 import chromedriver_binary
-import lib.moneyforward_action as mf
+import modules.moneyforward_action as mf
 
 with open('config.yml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
