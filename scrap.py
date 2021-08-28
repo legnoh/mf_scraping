@@ -19,20 +19,20 @@ password = os.environ['MF_PASSWORD']
 mf_driver = mf.login(driver, email, password)
 
 # get Monthly balance
-elements = mf_driver.find_elements_by_css_selector(config['balance']['css_selector'])
-budget = {
-    'income': mf.format_balance(elements[0].text),
-    'expense': mf.format_balance(elements[1].text),
-    'balance': mf.format_balance(elements[2].text)
+elements = mf_driver.find_elements_by_css_selector(config['monthly_total']['css_selector'])
+monthly_total = {
+    '当月収入': mf.format_balance(elements[0].text),
+    '当月支出': mf.format_balance(elements[1].text),
+    '当月収支': mf.format_balance(elements[2].text)
 }
 
 # get portfolio
 mf_driver.get(config['portfolio']['url'])
 portfolio = {
-    'total_amount': mf.format_balance(
+    '資産総額': mf.format_balance(
         mf_driver.find_element_by_css_selector(config['portfolio']['total_amount']['css_selector']).text
     ),
-    'genre': {}
+    '内訳': {}
 }
 for genre in config['portfolio']['genre']['css_selector']:
     title = mf_driver.find_element_by_css_selector(genre['root'] + genre['title']).text
@@ -42,18 +42,18 @@ for genre in config['portfolio']['genre']['css_selector']:
     accounts = mf.table_to_dict(
         mf_driver.find_element_by_css_selector(genre['root'] + genre['table'])
     )
-    portfolio['genre'][title] = {
-        'amount': amount,
-        'accounts': accounts
+    portfolio['内訳'][title] = {
+        '合計': amount,
+        '口座情報': accounts
     }
 
 # get liabilities
 mf_driver.get(config['liability']['url'])
 liability = {
-    'total_amount': mf.format_balance(
+    '負債総額': mf.format_balance(
         mf_driver.find_element_by_css_selector(config['liability']['total_amount']['css_selector']).text
     ),
-    'accounts': mf.table_to_dict(
+    '内訳': mf.table_to_dict(
         mf_driver.find_element_by_css_selector(config['liability']['accounts']['css_selector']['table'])
     )
 }
@@ -61,7 +61,7 @@ mf_driver.quit()
 
 results_json = json.dumps({
     'time': now_format,
-    'budget': budget,
+    'monthly_total': monthly_total,
     'portfolio': portfolio,
     'liability': liability
 })

@@ -1,5 +1,5 @@
 ---
-balance:
+monthly_total:
   css_selector: "table#monthly_total_table_home > tbody > tr > td"
 portfolio:
   url: "https://moneyforward.com/bs/portfolio"
