@@ -1,0 +1,32 @@
+---
+balance:
+  css_selector: "table#monthly_total_table_home > tbody > tr > td"
+portfolio:
+  url: "https://moneyforward.com/bs/portfolio"
+  total_amount:
+    css_selector: "section.bs-total-assets > div.heading-radius-box"
+  genre:
+    css_selector:
+    - root: "section#portfolio_det_depo > "
+      title: "h1"
+      amount: "section > h1"
+      table: "section > table"
+    - root: "section#portfolio_det_mf > "
+      title: "h1"
+      amount: "section > h1"
+      table: "table"
+    - root: "section#portfolio_det_pns > "
+      title: "h1"
+      amount: "section > h1"
+      table: "table"
+    - root: "section#portfolio_det_po > "
+      title: "h1"
+      amount: "section > h1"
+      table: "table"
+liability:
+  url: "https://moneyforward.com/bs/liability"
+  total_amount:
+    css_selector: "section.bs-liability > section > div.heading-radius-box"
+  accounts:
+    css_selector:
+      table: "div#liability_det > section > section > table"

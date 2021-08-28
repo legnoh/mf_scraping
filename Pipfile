@@ -1,5 +1,7 @@
 [scripts]
-test = "python3 chromedriver.py"
+scrap = "python3 scrap.py"
 
 [packages]
 selenium = "*"
+chromedriver-binary = "==92.0.4515.107.0"
+pyyaml = "*"
