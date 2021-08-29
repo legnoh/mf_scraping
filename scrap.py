@@ -60,10 +60,10 @@ liability = {
 mf_driver.quit()
 
 results_json = json.dumps({
-    'time': now_format,
-    'monthly_total': monthly_total,
-    'portfolio': portfolio,
-    'liability': liability
+    '取得時刻': now_format,
+    '当月収支': monthly_total,
+    '資産': portfolio,
+    '負債': liability
 })
 
 with open('moneyforward.json', 'w') as stream:
