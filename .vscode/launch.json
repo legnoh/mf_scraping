@@ -10,6 +10,7 @@
             "request": "launch",
             "program": "scrap.py",
             "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
